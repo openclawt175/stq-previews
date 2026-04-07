@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STQ — Advisor Segmentation Chart</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F0EFEB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 24px;
+}
+.chart-card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(27,46,75,0.06);
+  padding: 48px;
+  max-width: 720px;
+  width: 100%;
+}
+.chart-title {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1B2E4B;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.chart-subtitle {
+  font-size: 0.875rem;
+  color: #5a6a7e;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+.marimekko {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.column-label {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5a6a7e;
+  margin-bottom: 8px;
+}
+.column-total {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1B2E4B;
+  margin-bottom: 16px;
+}
+.bar-stack {
+  width: 200px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.bar-segment:hover {
+  filter: brightness(1.08);
+}
+.bar-pct {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.bar-segment.light-text .bar-pct {
+  color: #1B2E4B;
+  text-shadow: none;
+}
+
+/* Segments — navy palette */
+.seg-ultra { background: #1B2E4B; }
+.seg-hnw { background: #2a4570; }
+.seg-mass { background: #4a6a8a; }
+.seg-retail { background: #b8c4d0; }
+
+/* Revenue — teal/green palette (like original) */
+.seg-ultra-rev { background: #1B2E4B; }
+.seg-hnw-rev { background: #1a6b5a; }
+.seg-mass-rev { background: #3bb89a; }
+.seg-retail-rev { background: #8fd4c0; }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(27,46,75,0.08);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.legend-label {
+  font-size: 0.8125rem;
+  color: #5a6a7e;
+}
+.legend-sublabel {
+  font-size: 0.6875rem;
+  color: #8a96a6;
+}
+.chart-insight {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: rgba(27,46,75,0.03);
+  border-radius: 6px;
+  border-left: 3px solid #1B2E4B;
+}
+.chart-insight p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #1B2E4B;
+}
+.chart-insight strong {
+  font-weight: 700;
+}
+.chart-footnote {
+  margin-top: 20px;
+  font-size: 0.6875rem;
+  color: #8a96a6;
+  text-align: center;
+}
+.stq-tag {
+  display: inline-block;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5a6a7e;
+  border: 1px solid rgba(27,46,75,0.12);
+  border-radius: 3px;
+  padding: 3px 8px;
+  margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="chart-card">
+  <div class="stq-tag">STQ Research</div>
+  <div class="chart-title">The top 10% generates 60% of revenue.</div>
+  <div class="chart-subtitle">Client segmentation vs. revenue contribution across a typical large advisory firm. Most advisors build for volume. STQ builds for complexity.</div>
+
+  <div class="marimekko">
+    <!-- Population column -->
+    <div class="column">
+      <div class="column-label">Clients</div>
+      <div class="column-total">~4,200</div>
+      <div class="bar-stack">
+        <div class="bar-segment seg-ultra" style="flex: 8;"><span class="bar-pct">8%</span></div>
+        <div class="bar-segment seg-hnw" style="flex: 17;"><span class="bar-pct">17%</span></div>
+        <div class="bar-segment seg-mass" style="flex: 32;"><span class="bar-pct">32%</span></div>
+        <div class="bar-segment seg-retail light-text" style="flex: 43;"><span class="bar-pct">43%</span></div>
+      </div>
+    </div>
+
+    <!-- Revenue column -->
+    <div class="column">
+      <div class="column-label">Revenue</div>
+      <div class="column-total">$42M</div>
+      <div class="bar-stack">
+        <div class="bar-segment seg-ultra-rev" style="flex: 58;"><span class="bar-pct">58%</span></div>
+        <div class="bar-segment seg-hnw-rev" style="flex: 24;"><span class="bar-pct">24%</span></div>
+        <div class="bar-segment seg-mass-rev" style="flex: 13;"><span class="bar-pct">13%</span></div>
+        <div class="bar-segment seg-retail-rev light-text" style="flex: 5;"><span class="bar-pct">5%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1B2E4B;"></div>
+      <div>
+        <div class="legend-label">Ultra-HNW</div>
+        <div class="legend-sublabel">$10M+</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2a4570;"></div>
+      <div>
+        <div class="legend-label">HNW</div>
+        <div class="legend-sublabel">$1M – $10M</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#4a6a8a;"></div>
+      <div>
+        <div class="legend-label">Mass Affluent</div>
+        <div class="legend-sublabel">$250K – $1M</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#b8c4d0;"></div>
+      <div>
+        <div class="legend-label">Retail</div>
+        <div class="legend-sublabel">&lt;$250K</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-insight">
+    <p><strong>The implication:</strong> Large firms optimize for the 43% — high-volume, low-touch, cookie-cutter models. The 8% who actually need sophisticated tax-aware strategies, options overlays, and estate integration get the same playbook as everyone else. STQ exists for that 8%.</p>
+  </div>
+
+  <div class="chart-footnote">Illustrative segmentation based on industry data. Cerulli Associates, 2024.</div>
+</div>
+
+</body>
+</html>

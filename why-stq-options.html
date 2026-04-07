@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Sans:wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #1B2E4B;
+  --navy-light: #2a4570;
+  --cream: #F0EFEB;
+  --cream-dark: #E6E4DE;
+  --white: #FFFFFF;
+  --text-secondary: #5a6a7e;
+  --font-heading: 'Chakra Petch', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+body { font-family: var(--font-body); background: #ccc; padding: 40px; }
+.option-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--navy);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.section {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 64px 48px;
+  margin-bottom: 48px;
+  max-width: 1000px;
+}
+
+/* ===== OPTION A: Data Cards ===== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.data-card {
+  padding: 32px 24px;
+  border: 1px solid rgba(27,46,75,0.08);
+  border-radius: 6px;
+  background: var(--white);
+}
+.data-card-stat {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+.data-card-highlight {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+.data-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.data-card p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.data-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.data-card-tag {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--cream);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+/* ===== OPTION B: Comparison ===== */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(27,46,75,0.06);
+}
+.comp-col {
+  padding: 40px 32px;
+}
+.comp-them {
+  background: rgba(27,46,75,0.04);
+}
+.comp-stq {
+  background: var(--navy);
+}
+.comp-header {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(27,46,75,0.1);
+}
+.comp-them .comp-header { color: var(--text-secondary); }
+.comp-stq .comp-header { color: rgba(240,239,235,0.5); border-color: rgba(240,239,235,0.1); }
+.comp-row {
+  margin-bottom: 24px;
+}
+.comp-label {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.comp-them .comp-label { color: rgba(27,46,75,0.3); }
+.comp-stq .comp-label { color: rgba(240,239,235,0.35); }
+.comp-value {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.comp-them .comp-value { color: var(--text-secondary); }
+.comp-stq .comp-value { color: #F0EFEB; }
+
+/* ===== OPTION C: Hybrid ===== */
+.mini-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.mini-pillar {
+  text-align: center;
+  padding: 24px 12px;
+  border: 1px solid rgba(27,46,75,0.08);
+  border-radius: 6px;
+  background: var(--white);
+}
+.mini-pillar-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+.mini-pillar h4 {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.mini-pillar p {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(27,46,75,0.06);
+}
+.comp-table th {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  text-align: left;
+}
+.comp-table th:first-child { color: var(--text-secondary); background: var(--cream-dark); }
+.comp-table th:nth-child(2) { color: var(--text-secondary); background: rgba(27,46,75,0.04); }
+.comp-table th:nth-child(3) { color: #F0EFEB; background: var(--navy); }
+.comp-table td {
+  padding: 14px 24px;
+  font-size: 0.8125rem;
+  border-top: 1px solid rgba(27,46,75,0.06);
+  line-height: 1.5;
+}
+.comp-table td:first-child {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+.comp-table td:nth-child(2) { color: var(--text-secondary); }
+.comp-table td:nth-child(3) {
+  color: var(--navy);
+  font-weight: 600;
+}
+.comp-table tr:nth-child(even) td { background: rgba(27,46,75,0.015); }
+.checkmark { color: #1a6b5a; font-weight: 700; }
+.xmark { color: #b8c4d0; }
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.7;
+  max-width: 560px;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== OPTION A ===== -->
+<div class="section">
+  <div class="option-label">Option A — Data-Driven Cards</div>
+  <h2 class="section-title">Why STQ</h2>
+  <p class="section-sub">Four pillars. Each one backed by numbers, not platitudes.</p>
+  <div class="cards-grid">
+    <div class="data-card">
+      <div class="data-card-stat">0%</div>
+      <div class="data-card-highlight">PE Ownership</div>
+      <h3>Independence</h3>
+      <p>No PE ownership, no product quotas, no conflicts. 56.8% of $1B+ RIA deals are PE-backed. We sit on the same side of the table as you.</p>
+    </div>
+    <div class="data-card">
+      <div class="data-card-stat">100%</div>
+      <div class="data-card-highlight">Fiduciary, Always</div>
+      <h3>Integrity</h3>
+      <p>Open architecture, full transparency. No proprietary products. No commissions. No revenue sharing. Fee-only.</p>
+    </div>
+    <div class="data-card">
+      <div class="data-card-stat">6</div>
+      <div class="data-card-highlight">Advanced Strategies Most Can't Execute</div>
+      <h3>Innovation</h3>
+      <p>Technology-forward operations and cutting-edge tax products your current advisor probably can't access.</p>
+      <div class="data-card-tags">
+        <span class="data-card-tag">Box Spreads</span>
+        <span class="data-card-tag">1256 Contracts</span>
+        <span class="data-card-tag">Long-Short TLH</span>
+        <span class="data-card-tag">Options Overlay</span>
+        <span class="data-card-tag">Synthetic Lending</span>
+        <span class="data-card-tag">Asset Location</span>
+      </div>
+    </div>
+    <div class="data-card">
+      <div class="data-card-stat">&lt;50</div>
+      <div class="data-card-highlight">Client Relationships</div>
+      <h3>Individuality</h3>
+      <p>The average wirehouse advisor manages 200+ clients. We manage fewer than 50 — every portfolio tailored to your tax situation, income, liquidity, and objectives.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OPTION B ===== -->
+<div class="section">
+  <div class="option-label">Option B — Head-to-Head Comparison</div>
+  <h2 class="section-title">Why STQ</h2>
+  <p class="section-sub">The difference isn't subtle.</p>
+  <div class="comparison">
+    <div class="comp-col comp-them">
+      <div class="comp-header">The Typical Advisor</div>
+      <div class="comp-row">
+        <div class="comp-label">Ownership</div>
+        <div class="comp-value">PE-backed or bank-owned</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Clients per Advisor</div>
+        <div class="comp-value">200+</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Portfolio Approach</div>
+        <div class="comp-value">3 model portfolios</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Tax Strategy</div>
+        <div class="comp-value">Annual rebalancing, tax-unaware</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Box Spreads</div>
+        <div class="comp-value">Can't execute</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Options Capability</div>
+        <div class="comp-value">None or basic covered calls</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">CPA Coordination</div>
+        <div class="comp-value">Annual review, if that</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Fee Structure</div>
+        <div class="comp-value">1%+ with hidden costs</div>
+      </div>
+    </div>
+    <div class="comp-col comp-stq">
+      <div class="comp-header">STQ Capital Partners</div>
+      <div class="comp-row">
+        <div class="comp-label">Ownership</div>
+        <div class="comp-value">100% independent</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Clients per Advisor</div>
+        <div class="comp-value">&lt;50</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Portfolio Approach</div>
+        <div class="comp-value">Custom-built for your tax picture</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Tax Strategy</div>
+        <div class="comp-value">Every move is after-tax first</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Box Spreads</div>
+        <div class="comp-value">Core capability</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Options Capability</div>
+        <div class="comp-value">Full overlay — income, hedging, PVF</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">CPA Coordination</div>
+        <div class="comp-value">Year-round collaboration</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Fee Structure</div>
+        <div class="comp-value">Transparent, competitive, fee-only</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OPTION C ===== -->
+<div class="section">
+  <div class="option-label">Option C — Hybrid (Pillars + Table)</div>
+  <h2 class="section-title">Why STQ</h2>
+  <p class="section-sub">Our values and how they translate to real differences.</p>
+  <div class="mini-pillars">
+    <div class="mini-pillar">
+      <div class="mini-pillar-icon">⚖️</div>
+      <h4>Independence</h4>
+      <p>0% PE ownership. No conflicts.</p>
+    </div>
+    <div class="mini-pillar">
+      <div class="mini-pillar-icon">🔒</div>
+      <h4>Integrity</h4>
+      <p>Fee-only fiduciary. Always.</p>
+    </div>
+    <div class="mini-pillar">
+      <div class="mini-pillar-icon">⚡</div>
+      <h4>Innovation</h4>
+      <p>Strategies 94% can't execute.</p>
+    </div>
+    <div class="mini-pillar">
+      <div class="mini-pillar-icon">🎯</div>
+      <h4>Individuality</h4>
+      <p>&lt;50 clients. Zero templates.</p>
+    </div>
+  </div>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Typical Advisor</th>
+        <th>STQ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tax-aware rebalancing</td>
+        <td><span class="xmark">✗</span> Annual, tax-blind</td>
+        <td><span class="checkmark">✓</span> Every move, after-tax first</td>
+      </tr>
+      <tr>
+        <td>Box spread lending</td>
+        <td><span class="xmark">✗</span> Can't execute</td>
+        <td><span class="checkmark">✓</span> Core capability</td>
+      </tr>
+      <tr>
+        <td>Long-short TLH</td>
+        <td><span class="xmark">✗</span> Long-only, ossifies</td>
+        <td><span class="checkmark">✓</span> Continuous in all markets</td>
+      </tr>
+      <tr>
+        <td>Options overlay</td>
+        <td><span class="xmark">✗</span> None or basic</td>
+        <td><span class="checkmark">✓</span> Income, hedging, PVF</td>
+      </tr>
+      <tr>
+        <td>CPA coordination</td>
+        <td><span class="xmark">✗</span> Once a year</td>
+        <td><span class="checkmark">✓</span> Year-round</td>
+      </tr>
+      <tr>
+        <td>Asset location</td>
+        <td><span class="xmark">✗</span> Rarely considered</td>
+        <td><span class="checkmark">✓</span> Foundation of every portfolio</td>
+      </tr>
+      <tr>
+        <td>Clients per advisor</td>
+        <td>200+</td>
+        <td><strong>&lt;50</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
