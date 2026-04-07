@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Sans:wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #1B2E4B;
+  --cream: #F0EFEB;
+  --cream-dark: #E6E4DE;
+  --white: #FFFFFF;
+  --text-secondary: #5a6a7e;
+  --font-heading: 'Chakra Petch', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+body { font-family: var(--font-body); background: var(--cream); padding: 64px 48px; }
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card {
+  padding: 36px 28px;
+  border: 1px solid rgba(27,46,75,0.08);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.4);
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.card:hover {
+  background: var(--white);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(27,46,75,0.06);
+}
+.card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.card p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.card-tag {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--cream-dark);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+</style>
+</head>
+<body>
+<h2 class="section-title">Why STQ</h2>
+<div class="cards-grid">
+  <div class="card">
+    <h3>Independence</h3>
+    <p>No PE ownership, no product quotas, no conflicts. We sit on the same side of the table as you.</p>
+  </div>
+  <div class="card">
+    <h3>Integrity</h3>
+    <p>Open architecture, full transparency, fiduciary at all times. We don't build products or guide clients into anything that serves us.</p>
+  </div>
+  <div class="card">
+    <h3>Innovation</h3>
+    <p>Technology-forward operations, cutting-edge tax products, and strategies most advisors can't execute.</p>
+    <div class="card-tags">
+      <span class="card-tag">Box Spreads</span>
+      <span class="card-tag">1256 Contracts</span>
+      <span class="card-tag">Long-Short TLH</span>
+      <span class="card-tag">Options Overlay</span>
+      <span class="card-tag">Synthetic Lending</span>
+      <span class="card-tag">Asset Location</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Individuality</h3>
+    <p>Every portfolio is tailored to your tax situation, income, liquidity, and objectives. No cookie cutters.</p>
+  </div>
+</div>
+</body>
+</html>
